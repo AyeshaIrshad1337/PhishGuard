@@ -5,7 +5,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load trained model
-model = joblib.load('D:\phisMe\phishing.pkl')
+model = joblib.load('phishing.pkl')
 
 @app.route('/')
 def home():

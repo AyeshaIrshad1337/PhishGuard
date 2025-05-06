@@ -6,6 +6,14 @@
     <title>PhishGuard - Smart Phishing URL Detector</title>
     <link rel="stylesheet" href="static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGMzZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTAiPjwvcGF0aD48L3N2Zz4=">
+    <style>
+        .scroll-btn {
+            cursor: pointer;
+            z-index: 10;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
     <!-- Particle Background -->
@@ -104,6 +112,22 @@
                     <button class="btn btn-outline btn-hover-effect" data-section="contact">Contact Us</button>
                 </div>
                 
+                <!-- Stats Counter -->
+                <div class="stats-counter slide-up-delay">
+                    <div class="stat-item">
+                        <div class="stat-value"><span class="counter" data-target="152">0</span>+</div>
+                        <div class="stat-label">Phishing Sites Detected Today</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value"><span class="counter" data-target="5489">0</span>+</div>
+                        <div class="stat-label">Users Protected</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value"><span class="counter" data-target="99">0</span>%</div>
+                        <div class="stat-label">Detection Accuracy</div>
+                    </div>
+                </div>
+                
                 <!-- Floating Elements -->
                 <div class="floating-elements">
                     <div class="floating-element fe-1"></div>
@@ -148,7 +172,7 @@
             </div>
         </div>
         <div class="scroll-indicator">
-            <button class="scroll-btn" data-section="detector">
+            <button class="scroll-btn" id="scroll-down-btn" onclick="document.getElementById('detector').scrollIntoView({behavior: 'smooth', block: 'start'})">
                 <span>Scroll Down</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bounce">
                     <path d="m6 9 6 6 6-6"></path>
@@ -194,6 +218,14 @@
                             <button type="button" class="example-url" data-url="https://secure-login.example.com">secure-login.example.com</button>
                             <button type="button" class="example-url" data-url="http://login-verify.suspicious.com">login-verify.suspicious.com</button>
                         </div>
+                        <div class="url-error-message" id="urlErrorMessage">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                            <span>Please enter a valid website URL (e.g., example.com or https://example.com)</span>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-full btn-glow">
@@ -211,6 +243,44 @@
                     <div class="result-animation"></div>
                     <h3 class="result-title">Result</h3>
                     <p class="result-text"></p>
+                </div>
+            </div>
+            
+            <!-- Features Section -->
+            <div class="features-section">
+                <h3 class="features-title reveal">How PhishGuard Protects You</h3>
+                <div class="features-grid">
+                    <div class="feature-card slide-in-left">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">Advanced AI Detection</h4>
+                        <p class="feature-description">Our machine learning algorithms analyze URLs for suspicious patterns and characteristics.</p>
+                    </div>
+                    <div class="feature-card slide-in-left" style="animation-delay: 0.2s;">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                                <path d="M12 8v4"></path>
+                                <path d="M12 16h.01"></path>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">Real-time Protection</h4>
+                        <p class="feature-description">Get instant results about potential phishing threats before you visit suspicious websites.</p>
+                    </div>
+                    <div class="feature-card slide-in-left" style="animation-delay: 0.4s;">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                                <circle cx="12" cy="11" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">Continuous Learning</h4>
+                        <p class="feature-description">Our system constantly improves by learning from new phishing techniques and attack patterns.</p>
+                    </div>
                 </div>
             </div>
             
@@ -256,6 +326,18 @@
                         <div class="contact-details">
                             <h3 class="contact-method-title">Report Phishing</h3>
                             <p class="contact-method-value">report@phishguard.io</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method slide-in-left" style="animation-delay: 0.4s;">
+                        <div class="contact-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3 class="contact-method-title">Call Us</h3>
+                            <p class="contact-method-value">+1 (555) 123-4567</p>
                         </div>
                     </div>
                 </div>
@@ -320,8 +402,16 @@
             <div class="footer-links">
                 <a href="#" class="footer-link">Privacy</a>
                 <a href="#" class="footer-link">Terms</a>
+                <a href="#" class="footer-link">FAQ</a>
             </div>
         </div>
+        
+        <!-- Back to top button -->
+        <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m18 15-6-6-6 6"></path>
+            </svg>
+        </button>
     </footer>
 
     <!-- Particles.js -->
@@ -463,11 +553,21 @@
             }
         });
 
-        // Smooth scrolling for navigation
+        // Smooth scrolling for navigation - FIXED SCROLL FUNCTIONALITY
         const scrollToSection = (sectionId) => {
             const section = document.getElementById(sectionId);
             if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
+                // Get the navbar height to offset the scroll position
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                
+                // Calculate the position to scroll to (element position - navbar height)
+                const offsetPosition = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                // Scroll to the calculated position
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
                 
                 // Update active nav link
                 document.querySelectorAll('.nav-link').forEach(link => {
@@ -489,44 +589,123 @@
 
         // Add click event listeners to all navigation buttons
         document.querySelectorAll('[data-section]').forEach(button => {
-            button.addEventListener('click', () => {
-                scrollToSection(button.dataset.section);
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = button.getAttribute('data-section');
+                scrollToSection(sectionId);
             });
         });
 
-        // URL Form submission
+        // Direct scroll down button functionality - FIXED
+        document.getElementById('scroll-down-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const detectorSection = document.getElementById('detector');
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            
+            window.scroll({
+                top: detectorSection.offsetTop - navbarHeight,
+                behavior: 'smooth'
+            });
+            
+            console.log('Scroll button clicked - direct scroll method');
+        });
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // URL Form submission with real API integration and URL validation
         const urlForm = document.getElementById('urlForm');
         const urlInput = document.getElementById('urlInput');
         const resultBox = document.getElementById('result');
         const resultText = document.querySelector('.result-text');
         const resultAnimation = document.querySelector('.result-animation');
+        const urlErrorMessage = document.getElementById('urlErrorMessage');
+
+        // Function to validate URL format
+        function isValidURL(string) {
+            // Basic URL validation regex
+            const urlPattern = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]*)?$/;
+            return urlPattern.test(string);
+        }
+
+        // Validate URL on input
+        urlInput.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                this.classList.add('is-typing');
+                
+                // Hide error message when user starts typing again
+                urlErrorMessage.classList.remove('show');
+            } else {
+                this.classList.remove('is-typing');
+            }
+        });
+
+        // Validate URL on blur
+        urlInput.addEventListener('blur', function() {
+            if (this.value.length > 0 && !isValidURL(this.value)) {
+                urlErrorMessage.classList.add('show');
+                this.classList.add('input-error');
+            } else {
+                urlErrorMessage.classList.remove('show');
+                this.classList.remove('input-error');
+            }
+        });
 
         urlForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            // Validate URL before submission
+            if (!isValidURL(urlInput.value)) {
+                urlErrorMessage.classList.add('show');
+                urlInput.classList.add('input-error');
+                urlInput.focus();
+                return; // Stop form submission
+            }
+            
+            // Hide error message if URL is valid
+            urlErrorMessage.classList.remove('show');
+            urlInput.classList.remove('input-error');
+            
+            // Show loading state
             resultBox.classList.remove('hidden');
-            resultText.textContent = "⏳ Checking...";
+            resultText.textContent = "⏳ Analyzing URL...";
             resultAnimation.classList.add('scanning');
+            resultAnimation.classList.remove('success', 'danger', 'error');
 
             try {
-                // Simulate API call with a delay
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url: urlInput.value })
+                });
                 
-                const url = urlInput.value;
-                // Simple mock detection logic
-                const isSuspicious = 
-                    url.includes('phishing') || 
-                    (url.includes('login') && url.includes('verify')) || 
-                    !url.includes('https://') || 
-                    Math.random() > 0.7; // Random factor for demo purposes
+                const data = await response.json();
                 
                 resultAnimation.classList.remove('scanning');
                 
-                if (isSuspicious) {
+                if (data.prediction.includes('Phishing')) {
                     resultAnimation.classList.add('danger');
-                    resultText.textContent = "⚠️ Warning: This URL appears to be suspicious and may be a phishing attempt.";
+                    resultText.textContent = data.prediction;
                 } else {
                     resultAnimation.classList.add('success');
-                    resultText.textContent = "✅ This URL appears to be safe.";
+                    resultText.textContent = data.prediction;
                 }
             } catch (error) {
                 resultAnimation.classList.remove('scanning');
@@ -540,8 +719,30 @@
         const contactForm = document.querySelector('.contact-form');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Message sent! (This is a demo)');
-            contactForm.reset();
+            
+            // Show success message
+            const formContainer = contactForm.parentElement;
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#27c93f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <h3>Message Sent!</h3>
+                <p>Thank you for contacting us. We'll get back to you soon.</p>
+                <button class="btn btn-outline btn-sm" id="reset-form">Send Another Message</button>
+            `;
+            
+            formContainer.appendChild(successMessage);
+            contactForm.style.display = 'none';
+            
+            // Add event listener to reset form
+            document.getElementById('reset-form').addEventListener('click', () => {
+                contactForm.reset();
+                contactForm.style.display = 'flex';
+                successMessage.remove();
+            });
         });
 
         // Update active nav link on scroll
@@ -587,7 +788,7 @@
         }, observerOptions);
 
         // Observe elements with animation classes
-        document.querySelectorAll('.reveal, .float-in, .slide-in-left, .slide-up, .slide-up-delay').forEach(el => {
+        document.querySelectorAll('.reveal, .float-in, .slide-in-left, .slide-up, .slide-up-delay, .feature-card').forEach(el => {
             observer.observe(el);
         });
 
@@ -663,42 +864,6 @@
                 this.classList.remove('is-typing');
             }
         });
-        
-        // Add CSS classes for animations
-        document.head.insertAdjacentHTML('beforeend', `
-            <style>
-                .highlight-pulse {
-                    animation: highlightPulse 1s ease;
-                }
-                
-                @keyframes highlightPulse {
-                    0% {
-                        box-shadow: 0 0 5px rgba(0, 195, 255, 0.5);
-                    }
-                    50% {
-                        box-shadow: 0 0 20px rgba(0, 195, 255, 0.8);
-                    }
-                    100% {
-                        box-shadow: 0 0 5px rgba(0, 195, 255, 0.5);
-                    }
-                }
-                
-                .is-typing {
-                    background-image: linear-gradient(90deg, rgba(0, 195, 255, 0.05) 0%, transparent 100%);
-                    background-size: 200% 100%;
-                    animation: gradientTyping 2s ease infinite;
-                }
-                
-                @keyframes gradientTyping {
-                    0% {
-                        background-position: 100% 50%;
-                    }
-                    100% {
-                        background-position: 0% 50%;
-                    }
-                }
-            </style>
-        `);
     </script>
 </body>
 </html>
